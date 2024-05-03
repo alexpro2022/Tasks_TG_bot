@@ -26,6 +26,6 @@ async def list_tasks_handler(message: types.Message) -> None:
     """`/tsk` command handler. Sends the message with the list of all tasks names."""
     text = TASK_LIST_MSG.format(
         username=u.get_username(message),
-        tasks=await tasks.get_all(),
+        tasks="\n".join(await tasks.get_all_names()),
     )
     await message.answer(text)

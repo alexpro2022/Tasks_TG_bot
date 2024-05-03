@@ -1,4 +1,4 @@
-async def get_all() -> list[str]:
+async def get_all_names() -> list[str]:
     return ["TASK1", "TASK2", "TASK3"]
 
 
