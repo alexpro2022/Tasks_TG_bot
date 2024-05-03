@@ -20,10 +20,8 @@ services:
     build:
       context: ../..
       dockerfile: docker/dev/Dockerfile
-    command: bash -c "python app/main.py"
+    command: bash -c "alembic upgrade head && python app/main.py"
     restart: always
-    #volumes:
-    #  - ../../app:/app/app
     depends_on:
       db:
         condition: service_healthy
