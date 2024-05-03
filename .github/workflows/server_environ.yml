@@ -1,4 +1,0 @@
-name: Setup host environment
-
-on:
-  workflow_call:
