@@ -1,0 +1,35 @@
+services:
+
+  db:
+    image: postgres:15.1-alpine
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    expose:
+      - $DB_PORT
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $DB_NAME"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  bot:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    command: bash -c "python app/main.py"
+    restart: always
+    volumes:
+      - ../app:/app/app
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - ../.env
+
+
+volumes:
+  db_data:
