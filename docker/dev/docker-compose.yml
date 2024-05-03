@@ -18,17 +18,17 @@ services:
 
   bot:
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
+      context: ../..
+      dockerfile: docker/dev/Dockerfile
     command: bash -c "python app/main.py"
     restart: always
-    volumes:
-      - ../app:/app/app
+    #volumes:
+    #  - ../../app:/app/app
     depends_on:
       db:
         condition: service_healthy
     env_file:
-      - ../.env
+      - ../../.env
 
 
 volumes:
