@@ -1,13 +1,8 @@
-import asyncio
-import logging
-
-from bot.start_bot import start_bot
-
-
-async def main() -> None:
-    await start_bot()
-
-
 if __name__ == "__main__":
+    import asyncio
+    import logging
+
+    from bot.start_bot import start_bot
+
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(main())
+    asyncio.run(start_bot())
