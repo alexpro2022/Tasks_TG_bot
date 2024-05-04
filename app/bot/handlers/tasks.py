@@ -18,7 +18,7 @@ class TaskInput(StatesGroup):
 async def add_task_handler(message: types.Message, state: FSMContext) -> None:
     """`/add` command handler. Starts dialog."""
     await state.set_state(TaskInput.task_name)
-    text = m.ENTER_TASK_NAME.format(username=u.get_username(message))
+    text = m.ENTER_TASK_NAME_MSG.format(username=u.get_username(message))
     await message.answer(text)
 
 
@@ -26,7 +26,7 @@ async def add_task_handler(message: types.Message, state: FSMContext) -> None:
 async def task_name_handler(message: types.Message, state: FSMContext) -> None:
     await state.update_data(task_name=message.text)
     await state.set_state(TaskInput.task_description)
-    text = m.ENTER_TASK_DESCRIPTION.format(username=u.get_username(message))
+    text = m.ENTER_TASK_DESCRIPTION_MSG.format(username=u.get_username(message))
     await message.answer(text)
 
 
@@ -43,9 +43,29 @@ async def task_description_handler(message: types.Message, state: FSMContext) ->
 
 @router.message(filters.Command("tsk"))
 async def list_tasks_handler(message: types.Message) -> None:
-    """`/tsk` command handler. Sends the message with the list of all tasks names."""
-    text = m.TASK_LIST_MSG.format(
-        username=u.get_username(message),
-        tasks="\n".join(await tasks.get_all_tasks_names()),
+    """`/tsk` command handler. Creates the keyboard with the task names buttons."""
+    text = m.TASK_LIST_MSG.format(username=u.get_username(message))
+    reply_markup = u.get_markup(
+        *[[(name, name)] for name in await tasks.get_all_tasks_names()]
     )
+    await message.answer(text, reply_markup=reply_markup)
+
+
+@router.message()
+async def wrong_command_handler(message: types.Message) -> None:
+    """Handles all messages except the commands `/start`, `/add`, `/tsk` and
+    tips what to type."""
+    text = m.WRONG_CMD_MSG.format(username=u.get_username(message))
     await message.answer(text)
+
+
+@router.callback_query()
+async def task_summary_handler(callback: types.CallbackQuery) -> None:
+    """Handles all callback queries - finds a task by name and
+    returns a summary of the chosen task."""
+    text = m.TASK_SUMMARY_MSG.format(
+        username=u.get_username(callback),
+        name=callback.data,
+        description=await tasks.get_task_description(task_name=callback.data),
+    )
+    await callback.message.edit_text(text)
