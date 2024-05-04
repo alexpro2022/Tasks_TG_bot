@@ -34,10 +34,9 @@ async def task_name_handler(message: types.Message, state: FSMContext) -> None:
 async def task_description_handler(message: types.Message, state: FSMContext) -> None:
     data = await state.update_data(task_description=message.text)
     await state.clear()
-    created_task = await tasks.save_task(**data)
     text = m.ADD_TASK_MSG.format(
         username=u.get_username(message),
-        task=f"{created_task.name}\n{created_task.description}\n",
+        task=await tasks.create_task(**data),
     )
     await message.answer(text)
 
@@ -47,6 +46,6 @@ async def list_tasks_handler(message: types.Message) -> None:
     """`/tsk` command handler. Sends the message with the list of all tasks names."""
     text = m.TASK_LIST_MSG.format(
         username=u.get_username(message),
-        tasks="\n".join(await tasks.get_all_names()),
+        tasks="\n".join(await tasks.get_all_tasks_names()),
     )
     await message.answer(text)
