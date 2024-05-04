@@ -14,3 +14,8 @@ async def create_task(task_name: str, task_description: str) -> Task:
 
 async def get_all_tasks_names() -> list[str]:
     return [task.name for task in await crud.get_all(Task)]
+
+
+async def get_task_description(task_name: str) -> str:
+    task = await crud.get(Task, name=task_name)
+    return task[0].description
