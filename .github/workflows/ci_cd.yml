@@ -14,3 +14,8 @@ jobs:
     needs: tests
     uses: ./.github/workflows/build_push.yml
     secrets: inherit
+
+  server_environment:
+    needs: tests
+    uses: ./.github/workflows/server_environ.yml
+    secrets: inherit
