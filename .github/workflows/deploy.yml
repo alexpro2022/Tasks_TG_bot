@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      back_or_front:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            sudo systemctl stop nginx
+            cd ${{ secrets.PROJECT_NAME }}
+            sudo docker-compose -f docker-compose.yml --env-file .env down -v
+            sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PROJECT_NAME }}_${{ inputs.back_or_front }}
+            sudo docker-compose -f docker-compose.yml --env-file .env up -d --quiet-pull
