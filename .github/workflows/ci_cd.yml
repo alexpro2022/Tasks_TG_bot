@@ -23,5 +23,4 @@ jobs:
   deploy:
     needs: [build_and_push_to_docker_hub, server_environment]
     uses: ./.github/workflows/deploy.yml
-    with:
     secrets: inherit
