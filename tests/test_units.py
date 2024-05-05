@@ -14,7 +14,6 @@ def test_task_input_class() -> None:
 task_model_fields = pytest.mark.parametrize("field_name", ("id", "name", "description"))
 
 
-# @pytest.mark.parametrize('field_name', ('id', 'name', 'description'))
 @task_model_fields
 def test_task_model_attr(field_name: str) -> None:
     assert hasattr(Task, field_name)
