@@ -3,7 +3,7 @@ from repositories.exceptions import ObjectExistsError
 from repositories.models import Task
 
 
-async def create_task(task_name: str, task_description: str) -> Task:
+async def create_task(task_name: str, task_description: str) -> str:
     task = Task(name=task_name, description=task_description)
     try:
         created_task: Task = await crud.create(task)
