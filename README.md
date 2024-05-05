@@ -1,12 +1,12 @@
 # Tasks_TG_bot
 
+[![Test Suite](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/branch_test.yml/badge.svg)](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/branch_test.yml)
 
 
 ## Оглавление
 - [Технологии](#технологии)
 - [Описание работы](#описание-работы)
 - [Установка приложения](#установка-приложения)
-- [Запуск тестов](#запуск-тестов)
 - [Запуск приложения](#запуск-приложения)
 - [Удаление приложения](#удаление-приложения)
 - [Автор](#автор)
@@ -63,19 +63,6 @@ cd Tasks_TG_bot
 cp env_example .env
 nano .env
 ```
-
-[⬆️Оглавление](#оглавление)
-
-<br>
-
-## Запуск тестов:
-
-Из корневой директории проекта выполните команду запуска тестов:
-```bash
-docker compose -f docker/tests/test.docker-compose.yml --env-file .env up --build --abort-on-container-exit && \
-docker compose -f docker/tests/test.docker-compose.yml --env-file .env down -v
-```
-После прохождения тестов в консоль будет выведен отчет pytest и coverage.
 
 [⬆️Оглавление](#оглавление)
 
