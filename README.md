@@ -1,7 +1,9 @@
 # Tasks_TG_bot
 
 [![CI/CD](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/ci_cd.yml)
+[![codecov](https://codecov.io/gh/alexpro2022/Tasks_TG_bot/graph/badge.svg?token=ea3f5WxUb0)](https://codecov.io/gh/alexpro2022/Tasks_TG_bot)
 
+<br>
 
 ## Оглавление
 - [Технологии](#технологии)
