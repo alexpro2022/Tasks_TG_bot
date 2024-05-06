@@ -66,7 +66,7 @@ docker --version && docker-compose --version
 ```bash
 git clone https://github.com/alexpro2022/Tasks_TG_bot.git
 cd Tasks_TG_bot
-cp env_example .env
+cp .env_example .env
 nano .env
 ```
 
