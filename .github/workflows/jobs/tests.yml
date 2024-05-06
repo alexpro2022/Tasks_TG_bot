@@ -2,6 +2,9 @@ name: Tests Ruff and pytest
 
 on:
   workflow_call:
+    secrets:
+      codecov_token:
+        required: true
 
 jobs:
   tests:
@@ -31,3 +34,4 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
