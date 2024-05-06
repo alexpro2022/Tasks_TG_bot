@@ -3,7 +3,6 @@ name: Test Suite
 on:
   push:
     branches-ignore:
-      - "main"
       - "develop"
   pull_request:
     branches:
