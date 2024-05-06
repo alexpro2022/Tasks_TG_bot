@@ -1,12 +1,12 @@
 # Tasks_TG_bot
 
+[![CI/CD](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/ci_cd.yml)
 
 
 ## Оглавление
 - [Технологии](#технологии)
 - [Описание работы](#описание-работы)
 - [Установка приложения](#установка-приложения)
-- [Запуск тестов](#запуск-тестов)
 - [Запуск приложения](#запуск-приложения)
 - [Удаление приложения](#удаление-приложения)
 - [Автор](#автор)
@@ -26,7 +26,6 @@
 [![Pytest](https://img.shields.io/badge/-Pytest-464646?logo=Pytest)](https://docs.pytest.org/en/latest/)
 [![Pytest-asyncio](https://img.shields.io/badge/-Pytest--asyncio-464646?logo=Pytest-asyncio)](https://pypi.org/project/pytest-asyncio/)
 [![pytest-cov](https://img.shields.io/badge/-pytest--cov-464646?logo=codecov)](https://pytest-cov.readthedocs.io/en/latest/)
-[![deepdiff](https://img.shields.io/badge/-deepdiff-464646?logo=deepdiff)](https://zepworks.com/deepdiff/6.3.1/diff.html)
 [![pre-commit](https://img.shields.io/badge/-pre--commit-464646?logo=pre-commit)](https://pre-commit.com/)
 
 [⬆️Оглавление](#оглавление)
@@ -64,19 +63,6 @@ cd Tasks_TG_bot
 cp env_example .env
 nano .env
 ```
-
-[⬆️Оглавление](#оглавление)
-
-<br>
-
-## Запуск тестов:
-
-Из корневой директории проекта выполните команду запуска тестов:
-```bash
-docker compose -f docker/tests/test.docker-compose.yml --env-file .env up --build --abort-on-container-exit && \
-docker compose -f docker/tests/test.docker-compose.yml --env-file .env down -v
-```
-После прохождения тестов в консоль будет выведен отчет pytest и coverage.
 
 [⬆️Оглавление](#оглавление)
 

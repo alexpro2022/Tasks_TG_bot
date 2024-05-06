@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  db:
+    image: postgres:15.1-alpine
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    expose:
+      - $DB_PORT
+
+  bot:
+    image: "${DOCKERHUB_USERNAME}/${PROJECT_NAME}"
+    command: bash -c "alembic upgrade head && python app/main.py"
+    restart: always
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+
+
+volumes:
+  db_data:

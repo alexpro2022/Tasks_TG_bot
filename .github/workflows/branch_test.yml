@@ -10,8 +10,6 @@ on:
       - "main"
       - "develop"
 
-
 jobs:
-
   tests:
     uses: ./.github/workflows/tests.yml
