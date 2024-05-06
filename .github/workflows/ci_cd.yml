@@ -8,19 +8,19 @@ on:
 jobs:
 
   tests:
-    uses: ./.github/workflows/job/tests.yml
+    uses: ./.github/workflows/tests.yml
 
   build_and_push_to_docker_hub:
     needs: tests
-    uses: ./.github/workflows/job/build_push.yml
+    uses: ./.github/workflows/build_push.yml
     secrets: inherit
 
   server_environment:
     needs: tests
-    uses: ./.github/workflows/job/server_environ.yml
+    uses: ./.github/workflows/server_environ.yml
     secrets: inherit
 
   deploy:
     needs: [build_and_push_to_docker_hub, server_environment]
-    uses: ./.github/workflows/job/deploy.yml
+    uses: ./.github/workflows/deploy.yml
     secrets: inherit

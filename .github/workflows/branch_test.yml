@@ -12,6 +12,6 @@ on:
 
 jobs:
   tests:
-    uses: ./.github/workflows/job/tests.yml
+    uses: ./.github/workflows/tests.yml
     secrets:
       codecov_token: ${{ secrets.CODECOV_TOKEN }}
