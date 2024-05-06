@@ -1,6 +1,6 @@
 # Tasks_TG_bot
 
-[![Test Suite](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/branch_test.yml/badge.svg)](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/branch_test.yml)
+[![CI/CD](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/alexpro2022/Tasks_TG_bot/actions/workflows/ci_cd.yml)
 
 
 ## Оглавление
