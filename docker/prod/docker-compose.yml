@@ -12,7 +12,7 @@ services:
       - $DB_PORT
 
   bot:
-    image: "${DOCKERHUB_USERNAME}/${PROJECT_NAME}_backend"
+    image: "${DOCKERHUB_USERNAME}/${PROJECT_NAME}"
     command: bash -c "alembic upgrade head && python app/main.py"
     restart: always
     depends_on:
