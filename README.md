@@ -19,7 +19,7 @@
 ## Технологии
 <details><summary>Подробнее</summary><br>
 
-[![Python](https://img.shields.io/badge/python-3.12-blue?logo=python)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue?logo=python)](https://www.python.org/)
 [![aiogram](https://img.shields.io/badge/aiogram-3.5-blue?logo=aiogram)](https://aiogram.dev/)
 [![Pydantic](https://img.shields.io/badge/pydantic-2.7-blue?logo=Pydantic)](https://docs.pydantic.dev/)
 [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-464646?logo=PostgreSQL)](https://www.postgresql.org/)
@@ -82,7 +82,7 @@ docker compose -f docker/test/docker-compose.yml --env-file .env down -v
 ```
 После прохождения тестов в консоль будет выведен отчет pytest и coverage.
 
-⬆️Оглавление
+[⬆️Оглавление](#оглавление)
 
 <br>
 
